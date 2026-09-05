@@ -5,9 +5,10 @@ import { signup, login } from '@/lib/api';
 type AuthModalProps = {
   mode: 'signin' | 'signup';
   onClose: () => void;
+  onLoginSuccess: () => void;
 };
 
-export default function AuthModal({ mode, onClose }: AuthModalProps) {
+export default function AuthModal({ mode, onClose, onLoginSuccess }: AuthModalProps) {
   const [isSignup, setIsSignup] = useState(mode === 'signup');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,6 +32,7 @@ export default function AuthModal({ mode, onClose }: AuthModalProps) {
         const result = await login(email, password);
         localStorage.setItem('access_token', result.access_token);
         setSuccess('Signed in successfully!');
+        onLoginSuccess();
         setTimeout(onClose, 1000);
       }
     } catch (err) {

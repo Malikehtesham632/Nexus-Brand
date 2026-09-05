@@ -1,4 +1,4 @@
-import { Layers, Twitter, Linkedin, Github, Youtube } from 'lucide-react';
+import { Layers, Linkedin, Instagram, Facebook, Music2, Mail, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
 const footerSections = [
@@ -21,10 +21,15 @@ const footerSections = [
 ];
 
 const socials = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Instagram, href: 'https://www.instagram.com/ehtesham_ul_haq007/', label: 'Instagram' },
+  { icon: Facebook, href: 'https://www.facebook.com/Malikehtesham077', label: 'Facebook' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/ehtesham-ul-haq-173b54288', label: 'LinkedIn' },
+  { icon: Music2, href: 'https://www.tiktok.com/@ehtesham_ul_haq4', label: 'TikTok' },
+];
+
+const contactDetails = [
+  { icon: Mail, label: 'ehtesham918605@gmail.com', href: 'mailto:ehtesham918605@gmail.com' },
+  { icon: Phone, label: '+92 308 7629734', href: 'tel:+923087629734' },
 ];
 
 export default function Footer() {
@@ -48,11 +53,25 @@ export default function Footer() {
                 The all-in-one business platform that helps teams automate workflows,
                 unify data, and scale faster.
               </p>
+              <div className="flex flex-col gap-2 mb-6">
+                {contactDetails.map((contact) => (
+                  <a
+                    key={contact.label}
+                    href={contact.href}
+                    className="flex items-center gap-2 text-white/50 text-sm hover:text-white transition-colors"
+                  >
+                    <contact.icon className="w-4 h-4" />
+                    {contact.label}
+                  </a>
+                ))}
+              </div>
               <div className="flex gap-3">
                 {socials.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:scale-110"
                   >

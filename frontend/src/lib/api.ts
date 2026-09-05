@@ -30,6 +30,18 @@ export async function login(email: string, password: string) {
   return response.json();
 }
 
+export async function getMe(token: string) {
+  const response = await fetch(`${API_BASE_URL}/me`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (!response.ok) {
+    throw new Error('Not authenticated');
+  }
+
+  return response.json();
+}
+
 export async function submitContactForm(name: string, email: string, message: string, formType: string) {
   const response = await fetch(`${API_BASE_URL}/contact`, {
     method: 'POST',

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Layers } from 'lucide-react';
+import { Menu, X, Layers, User, LogOut } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
+import { getMe } from '@/lib/api';
 
 const navLinks = [
   { label: 'Features', href: '#features' },
@@ -13,6 +14,31 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'signin' | 'signup' | null>(null);
+  const [userName, setUserName] = useState<string | null>(null);
+
+  function checkLoginStatus() {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+      setUserName(null);
+      return;
+    }
+    getMe(token)
+      .then((user) => setUserName(user.name))
+      .catch(() => {
+        localStorage.removeItem('access_token');
+        setUserName(null);
+      });
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem('access_token');
+    setUserName(null);
+    setMobileOpen(false);
+  }
+
+  useEffect(() => {
+    checkLoginStatus();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -58,20 +84,44 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={() => setAuthMode('signin')}
-              className={`text-sm font-semibold transition-colors ${
-                scrolled ? 'text-neutral-700 hover:text-primary-600' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Sign in
-            </button>
-            <button
-              onClick={() => setAuthMode('signup')}
-              className="text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-600 px-5 py-2.5 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5 transition-all"
-            >
-              Get Started
-            </button>
+            {userName ? (
+              <>
+                <span
+                  className={`flex items-center gap-2 text-sm font-semibold ${
+                    scrolled ? 'text-neutral-700' : 'text-white/90'
+                  }`}
+                >
+                  <User className="w-4 h-4" />
+                  Hi, {userName}
+                </span>
+                <button
+                  onClick={handleSignOut}
+                  className={`flex items-center gap-1.5 text-sm font-semibold transition-colors ${
+                    scrolled ? 'text-neutral-700 hover:text-primary-600' : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign out
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => setAuthMode('signin')}
+                  className={`text-sm font-semibold transition-colors ${
+                    scrolled ? 'text-neutral-700 hover:text-primary-600' : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  Sign in
+                </button>
+                <button
+                  onClick={() => setAuthMode('signup')}
+                  className="text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-600 px-5 py-2.5 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5 transition-all"
+                >
+                  Get Started
+                </button>
+              </>
+            )}
           </div>
 
           <button
@@ -99,30 +149,54 @@ export default function Navbar() {
                 </a>
               ))}
               <div className="border-t border-neutral-200 my-2" />
-              <button
-                onClick={() => {
-                  setAuthMode('signin');
-                  setMobileOpen(false);
-                }}
-                className="px-4 py-3 text-sm font-semibold text-neutral-700 hover:text-primary-600 rounded-lg transition-colors text-left"
-              >
-                Sign in
-              </button>
-              <button
-                onClick={() => {
-                  setAuthMode('signup');
-                  setMobileOpen(false);
-                }}
-                className="px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl text-center"
-              >
-                Get Started
-              </button>
+              {userName ? (
+                <>
+                  <div className="px-4 py-2 text-sm font-semibold text-neutral-700 flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    Hi, {userName}
+                  </div>
+                  <button
+                    onClick={handleSignOut}
+                    className="px-4 py-3 text-sm font-semibold text-neutral-700 hover:text-primary-600 rounded-lg transition-colors text-left flex items-center gap-2"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    Sign out
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => {
+                      setAuthMode('signin');
+                      setMobileOpen(false);
+                    }}
+                    className="px-4 py-3 text-sm font-semibold text-neutral-700 hover:text-primary-600 rounded-lg transition-colors text-left"
+                  >
+                    Sign in
+                  </button>
+                  <button
+                    onClick={() => {
+                      setAuthMode('signup');
+                      setMobileOpen(false);
+                    }}
+                    className="px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl text-center"
+                  >
+                    Get Started
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
       </nav>
 
-      {authMode && <AuthModal mode={authMode} onClose={() => setAuthMode(null)} />}
+      {authMode && (
+        <AuthModal
+          mode={authMode}
+          onClose={() => setAuthMode(null)}
+          onLoginSuccess={checkLoginStatus}
+        />
+      )}
     </header>
   );
 }
