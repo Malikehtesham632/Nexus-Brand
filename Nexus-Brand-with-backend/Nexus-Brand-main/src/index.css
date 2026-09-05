@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #3366ff 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1c3091 50%, #1837e1 100%);
+    background-size: 200% 200%;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .grid-pattern {
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .grid-pattern-dark {
+    background-image: linear-gradient(rgba(15,23,42,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(15,23,42,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .animate-delay-100 { animation-delay: 0.1s; opacity: 0; }
+  .animate-delay-200 { animation-delay: 0.2s; opacity: 0; }
+  .animate-delay-300 { animation-delay: 0.3s; opacity: 0; }
+  .animate-delay-400 { animation-delay: 0.4s; opacity: 0; }
+  .animate-delay-500 { animation-delay: 0.5s; opacity: 0; }
+  .animate-delay-700 { animation-delay: 0.7s; opacity: 0; }
+
+  .shimmer-bg {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background-size: 200% 100%;
+  }
+
+  .shimmer-line {
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .text-gradient-animated {
+    background: linear-gradient(135deg, #3366ff, #10b981, #3366ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px rgba(51, 102, 255, 0.3), 0 0 60px rgba(51, 102, 255, 0.15);
+  }
+
+  .glow-secondary {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.3), 0 0 60px rgba(16, 185, 129, 0.15);
+  }
+
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+    transform: translateX(-100%);
+    transition: transform 0.7s ease;
+  }
+
+  .card-shine:hover::after {
+    transform: translateX(100%);
+  }
+
+  .border-glow {
+    position: relative;
+  }
+
+  .border-glow::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(51,102,255,0.5), rgba(16,185,129,0.5));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .border-glow:hover::before {
+    opacity: 1;
+  }
+
+  .animate-delay-100 { animation-delay: 0.1s; opacity: 0; }
+  .animate-delay-200 { animation-delay: 0.2s; opacity: 0; }
+  .animate-delay-300 { animation-delay: 0.3s; opacity: 0; }
+  .animate-delay-400 { animation-delay: 0.4s; opacity: 0; }
+  .animate-delay-500 { animation-delay: 0.5s; opacity: 0; }
+  .animate-delay-700 { animation-delay: 0.7s; opacity: 0; }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

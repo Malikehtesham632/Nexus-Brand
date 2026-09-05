@@ -1,0 +1,113 @@
+import { useState } from 'react';
+import { X } from 'lucide-react';
+import { signup, login } from '@/lib/api';
+
+type AuthModalProps = {
+  mode: 'signin' | 'signup';
+  onClose: () => void;
+};
+
+export default function AuthModal({ mode, onClose }: AuthModalProps) {
+  const [isSignup, setIsSignup] = useState(mode === 'signup');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+    setLoading(true);
+
+    try {
+      if (isSignup) {
+        await signup(name, email, password);
+        setSuccess('Account created! You can now sign in.');
+        setIsSignup(false);
+      } else {
+        const result = await login(email, password);
+        localStorage.setItem('access_token', result.access_token);
+        setSuccess('Signed in successfully!');
+        setTimeout(onClose, 1000);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-neutral-400 hover:text-neutral-700"
+          aria-label="Close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        <h2 className="text-2xl font-bold text-neutral-900 mb-1">
+          {isSignup ? 'Create your account' : 'Welcome back'}
+        </h2>
+        <p className="text-neutral-500 text-sm mb-6">
+          {isSignup ? 'Start your free trial today' : 'Sign in to your account'}
+        </p>
+
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {isSignup && (
+            <input
+              type="text"
+              placeholder="Full name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            />
+          )}
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          />
+
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {success && <p className="text-green-600 text-sm">{success}</p>}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50"
+          >
+            {loading ? 'Please wait...' : isSignup ? 'Sign up' : 'Sign in'}
+          </button>
+        </form>
+
+        <p className="text-center text-sm text-neutral-500 mt-6">
+          {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
+          <button
+            onClick={() => setIsSignup(!isSignup)}
+            className="text-primary-600 font-semibold hover:underline"
+          >
+            {isSignup ? 'Sign in' : 'Sign up'}
+          </button>
+        </p>
+      </div>
+    </div>
+  );
+}
