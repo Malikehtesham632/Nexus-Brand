@@ -42,6 +42,22 @@ export async function getMe(token: string) {
   return response.json();
 }
 
+export type ChatHistoryItem = { role: string; content: string };
+
+export async function sendChatMessage(message: string, history: ChatHistoryItem[]) {
+  const response = await fetch(`${API_BASE_URL}/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, history }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Chat request failed');
+  }
+
+  return response.json();
+}
+
 export async function submitContactForm(name: string, email: string, message: string, formType: string) {
   const response = await fetch(`${API_BASE_URL}/contact`, {
     method: 'POST',

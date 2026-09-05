@@ -45,3 +45,17 @@ class ContactFormOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class ChatHistoryItem(BaseModel):
+    role: str
+    content: str
+
+
+class ChatIn(BaseModel):
+    message: str
+    history: list[ChatHistoryItem] = []
+
+
+class ChatOut(BaseModel):
+    reply: str

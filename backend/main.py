@@ -7,6 +7,8 @@ from jose import JWTError
 import models
 import schemas
 import auth
+import notifications
+import chat
 from database import engine, get_db
 
 models.Base.metadata.create_all(bind=engine)
@@ -86,7 +88,22 @@ def submit_contact_form(form_data: schemas.ContactFormIn, db: Session = Depends(
     db.add(submission)
     db.commit()
     db.refresh(submission)
+
+    try:
+        notifications.send_contact_notification(
+            form_data.name, form_data.email, form_data.message, form_data.form_type
+        )
+    except Exception as error:
+        print(f"Failed to send email notification: {error}")
+
     return submission
+
+
+@app.post("/chat", response_model=schemas.ChatOut)
+def chat_with_ai(chat_data: schemas.ChatIn):
+    history = [{"role": item.role, "content": item.content} for item in chat_data.history]
+    reply = chat.get_ai_reply(chat_data.message, history)
+    return {"reply": reply}
 
 
 @app.get("/")
