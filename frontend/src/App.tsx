@@ -1,28 +1,35 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Stats from '@/components/Stats';
-import Features from '@/components/Features';
-import Solutions from '@/components/Solutions';
-import Testimonials from '@/components/Testimonials';
-import Pricing from '@/components/Pricing';
-import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import ScrollToTop from '@/components/ScrollToTop';
+import Home from '@/pages/Home';
+import About from '@/pages/About';
+import Blog from '@/pages/Blog';
+import Careers from '@/pages/Careers';
+import Contact from '@/pages/Contact';
+import Profile from '@/pages/Profile';
+import StaticPage from '@/pages/StaticPage';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Stats />
-        <Features />
-        <Solutions />
-        <Testimonials />
-        <Pricing />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen bg-white">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/page/:slug" element={<StaticPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

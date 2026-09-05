@@ -1,22 +1,51 @@
+import { Link } from 'react-router-dom';
 import { Layers, Linkedin, Instagram, Facebook, Music2, Mail, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
 const footerSections = [
   {
     title: 'Product',
-    links: ['Features', 'Integrations', 'Pricing', 'Changelog', 'Roadmap', 'API Docs'],
+    links: [
+      { label: 'Features', to: '/#features' },
+      { label: 'Integrations', to: '/page/integrations' },
+      { label: 'Pricing', to: '/#pricing' },
+      { label: 'Changelog', to: '/page/changelog' },
+      { label: 'Roadmap', to: '/page/roadmap' },
+      { label: 'API Docs', to: '/page/api-docs' },
+    ],
   },
   {
     title: 'Company',
-    links: ['About', 'Blog', 'Careers', 'Press Kit', 'Partners', 'Contact'],
+    links: [
+      { label: 'About', to: '/about' },
+      { label: 'Blog', to: '/blog' },
+      { label: 'Careers', to: '/careers' },
+      { label: 'Press Kit', to: '/page/press-kit' },
+      { label: 'Partners', to: '/page/partners' },
+      { label: 'Contact', to: '/contact' },
+    ],
   },
   {
     title: 'Resources',
-    links: ['Help Center', 'Community', 'Tutorials', 'Webinars', 'Templates', 'Status'],
+    links: [
+      { label: 'Help Center', to: '/page/help-center' },
+      { label: 'Community', to: '/page/community' },
+      { label: 'Tutorials', to: '/page/tutorials' },
+      { label: 'Webinars', to: '/page/webinars' },
+      { label: 'Templates', to: '/page/templates' },
+      { label: 'Status', to: '/page/status' },
+    ],
   },
   {
     title: 'Legal',
-    links: ['Privacy', 'Terms', 'Security', 'GDPR', 'DPA', 'SOC 2'],
+    links: [
+      { label: 'Privacy', to: '/page/privacy' },
+      { label: 'Terms', to: '/page/terms' },
+      { label: 'Security', to: '/page/security' },
+      { label: 'GDPR', to: '/page/gdpr' },
+      { label: 'DPA', to: '/page/dpa' },
+      { label: 'SOC 2', to: '/page/soc2' },
+    ],
   },
 ];
 
@@ -43,12 +72,12 @@ export default function Footer() {
         <div className="grid lg:grid-cols-6 gap-12">
           <Reveal variant="fade-right" duration={600}>
             <div className="lg:col-span-2">
-              <a href="#" className="flex items-center gap-2.5 mb-5 group">
+              <Link to="/" className="flex items-center gap-2.5 mb-5 group">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
                   <Layers className="w-5 h-5 text-white" strokeWidth={2.5} />
                 </div>
                 <span className="text-xl font-extrabold tracking-tight">Nexus</span>
-              </a>
+              </Link>
               <p className="text-white/50 text-sm leading-relaxed max-w-xs mb-6">
                 The all-in-one business platform that helps teams automate workflows,
                 unify data, and scale faster.
@@ -90,13 +119,13 @@ export default function Footer() {
                 </h4>
                 <ul className="space-y-2.5">
                   {section.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
+                    <li key={link.label}>
+                      <Link
+                        to={link.to}
                         className="text-white/50 text-sm hover:text-white transition-all duration-200 inline-block hover:translate-x-1"
                       >
-                        {link}
-                      </a>
+                        {link.label}
+                      </Link>
                     </li>
                   ))}
                 </ul>

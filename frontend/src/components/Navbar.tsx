@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Layers, User, LogOut } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
 import { getMe } from '@/lib/api';
 
 const navLinks = [
-  { label: 'Features', href: '#features' },
-  { label: 'Solutions', href: '#solutions' },
-  { label: 'Testimonials', href: '#testimonials' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Features', href: '/#features' },
+  { label: 'Solutions', href: '/#solutions' },
+  { label: 'Testimonials', href: '/#testimonials' },
+  { label: 'Pricing', href: '/#pricing' },
 ];
 
 export default function Navbar() {
@@ -56,7 +57,7 @@ export default function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
-          <a href="#" className="flex items-center gap-2.5 group">
+          <Link to="/" className="flex items-center gap-2.5 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30 transition-transform group-hover:scale-105">
               <Layers className="w-5 h-5 text-white" strokeWidth={2.5} />
             </div>
@@ -65,13 +66,13 @@ export default function Navbar() {
             }`}>
               Nexus
             </span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
+                to={link.href}
                 className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
                   scrolled
                     ? 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
@@ -79,21 +80,22 @@ export default function Navbar() {
                 }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden md:flex items-center gap-3">
             {userName ? (
               <>
-                <span
-                  className={`flex items-center gap-2 text-sm font-semibold ${
+                <Link
+                  to="/profile"
+                  className={`flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity ${
                     scrolled ? 'text-neutral-700' : 'text-white/90'
                   }`}
                 >
                   <User className="w-4 h-4" />
                   Hi, {userName}
-                </span>
+                </Link>
                 <button
                   onClick={handleSignOut}
                   className={`flex items-center gap-1.5 text-sm font-semibold transition-colors ${
@@ -139,22 +141,26 @@ export default function Navbar() {
           <div className="md:hidden bg-white rounded-2xl shadow-xl border border-neutral-200 mt-2 mb-4 p-4 animate-fade-in-down">
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="px-4 py-3 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="border-t border-neutral-200 my-2" />
               {userName ? (
                 <>
-                  <div className="px-4 py-2 text-sm font-semibold text-neutral-700 flex items-center gap-2">
+                  <Link
+                    to="/profile"
+                    onClick={() => setMobileOpen(false)}
+                    className="px-4 py-2 text-sm font-semibold text-neutral-700 flex items-center gap-2 hover:text-primary-600"
+                  >
                     <User className="w-4 h-4" />
                     Hi, {userName}
-                  </div>
+                  </Link>
                   <button
                     onClick={handleSignOut}
                     className="px-4 py-3 text-sm font-semibold text-neutral-700 hover:text-primary-600 rounded-lg transition-colors text-left flex items-center gap-2"
