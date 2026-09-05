@@ -1,4 +1,4 @@
-const API_BASE_URL = 'https://nexus-brand-production.up.railway.app';const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'https://nexus-brand-production.up.railway.app';
 
 export async function signup(name: string, email: string, password: string) {
   const response = await fetch(`${API_BASE_URL}/signup`, {
