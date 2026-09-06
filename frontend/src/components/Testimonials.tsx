@@ -22,7 +22,7 @@ const testimonials = [
     name: 'Elena Rodriguez',
     role: 'VP Operations, DataFlow',
     avatar: 'ER',
-    avatarBg: 'from-accent-400 to-accent-600',
+    avatarBg: 'from-primary-300 to-primary-600',
     quote: 'We evaluated every platform on the market. Nexus was the only one that could scale from our 20-person team to 500 without missing a beat.',
     rating: 5,
   },
@@ -46,7 +46,7 @@ const testimonials = [
     name: 'David Kim',
     role: 'CTO, Northwind',
     avatar: 'DK',
-    avatarBg: 'from-accent-400 to-accent-600',
+    avatarBg: 'from-primary-300 to-primary-600',
     quote: 'As a CTO, security is my top concern. Nexus checked every box — SOC 2, SSO, granular permissions. My security team signed off in record time.',
     rating: 5,
   },
@@ -54,20 +54,20 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-24 lg:py-32 bg-white overflow-hidden">
-      <div className="absolute inset-0 grid-pattern-dark opacity-40" />
+    <section id="testimonials" className="relative py-24 lg:py-32 bg-noir-950 overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-25" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <Reveal variant="fade-up">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent-50 text-accent-700 text-sm font-semibold mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-semibold mb-4">
               Testimonials
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
               Loved by teams
               <span className="gradient-text"> everywhere</span>
             </h2>
-            <p className="mt-6 text-lg text-neutral-500 leading-relaxed">
+            <p className="mt-6 text-lg text-noir-300 leading-relaxed">
               Don't just take our word for it. Here's what 10,000+ teams have to say.
             </p>
           </div>
@@ -81,14 +81,14 @@ export default function Testimonials() {
               delay={(index % 3) * 120}
               duration={600}
             >
-              <div className="group relative bg-white rounded-2xl p-7 border border-neutral-200/70 hover:border-neutral-300 hover:shadow-2xl hover:shadow-neutral-200/40 transition-all duration-500 hover:-translate-y-2 card-shine">
-                <Quote className="absolute top-6 right-6 w-10 h-10 text-neutral-100 group-hover:text-primary-100 group-hover:scale-110 transition-all duration-500" />
+              <div className="group relative bg-noir-900 rounded-2xl p-7 border border-white/5 hover:border-primary-500/30 hover:shadow-2xl hover:shadow-primary-500/10 transition-all duration-500 hover:-translate-y-2 card-shine">
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-white/5 group-hover:text-primary-500/20 group-hover:scale-110 transition-all duration-500" />
 
                 <div className="flex gap-1 mb-4 relative">
                   {Array.from({ length: t.rating }).map((_, i) => (
                     <Star
                       key={i}
-                      className="w-4 h-4 fill-accent-400 text-accent-400 transition-transform duration-300"
+                      className="w-4 h-4 fill-primary-400 text-primary-400 transition-transform duration-300"
                       style={{
                         transitionDelay: `${i * 50}ms`,
                         transform: 'scale(1)',
@@ -97,7 +97,7 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <p className="text-neutral-700 leading-relaxed text-[15px] mb-6 relative">
+                <p className="text-noir-200 leading-relaxed text-[15px] mb-6 relative">
                   "{t.quote}"
                 </p>
 
@@ -106,8 +106,8 @@ export default function Testimonials() {
                     {t.avatar}
                   </div>
                   <div>
-                    <p className="text-neutral-900 font-semibold text-sm">{t.name}</p>
-                    <p className="text-neutral-400 text-xs">{t.role}</p>
+                    <p className="text-white font-semibold text-sm">{t.name}</p>
+                    <p className="text-noir-400 text-xs">{t.role}</p>
                   </div>
                 </div>
               </div>

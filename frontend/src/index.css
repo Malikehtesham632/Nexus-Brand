@@ -12,20 +12,25 @@
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #0c0a06;
   }
 }
 
 @layer utilities {
   .gradient-text {
-    background: linear-gradient(135deg, #3366ff 0%, #10b981 100%);
+    background: linear-gradient(135deg, #f3ddA0 0%, #d4af37 45%, #96721a 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .gradient-bg {
-    background: linear-gradient(135deg, #0f172a 0%, #1c3091 50%, #1837e1 100%);
+    background: linear-gradient(135deg, #0c0a06 0%, #181510 50%, #39290d 100%);
     background-size: 200% 200%;
+  }
+
+  .gold-border {
+    border: 1px solid rgba(212, 175, 55, 0.25);
   }
 
   .glass {
@@ -72,7 +77,7 @@
   }
 
   .text-gradient-animated {
-    background: linear-gradient(135deg, #3366ff, #10b981, #3366ff);
+    background: linear-gradient(135deg, #f3ddA0, #d4af37, #96721a, #d4af37, #f3ddA0);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -148,14 +153,14 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #181510;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #48453e;
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #d4af37;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -168,6 +173,6 @@
 }
 
 *:focus-visible {
-  outline: 2px solid #3366ff;
+  outline: 2px solid #d4af37;
   outline-offset: 2px;
 }

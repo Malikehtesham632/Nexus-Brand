@@ -16,7 +16,7 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-noir-950">
         <Navbar />
         <main>
           <PageTransition>

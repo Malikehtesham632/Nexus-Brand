@@ -75,11 +75,11 @@ export default function Hero() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in-up animate-delay-300">
               <a
                 href="#pricing"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-neutral-900 rounded-xl font-semibold text-base shadow-2xl hover:shadow-white/20 hover:-translate-y-0.5 transition-all"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-gradient-to-r from-primary-300 to-primary-500 text-noir-950 rounded-xl font-semibold text-base shadow-2xl shadow-primary-500/20 hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all"
               >
                 <span className="relative">
                   Start free trial
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-neutral-900/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-noir-950/30 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
@@ -189,8 +189,8 @@ export default function Hero() {
             Trusted by 10,000+ companies worldwide
           </p>
           <div className="overflow-hidden relative">
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-neutral-950 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-neutral-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-noir-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-noir-950 to-transparent z-10 pointer-events-none" />
             <div className="flex items-center gap-12 animate-marquee hover:[animation-play-state:paused]" style={{ width: 'max-content' }}>
               {[...logos, ...logos].map((logo, i) => (
                 <span

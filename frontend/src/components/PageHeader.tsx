@@ -10,7 +10,7 @@ type PageHeaderProps = {
 
 export default function PageHeader({ eyebrow, title, description, children }: PageHeaderProps) {
   return (
-    <section className="relative pt-28 pb-14 sm:pt-40 sm:pb-20 bg-neutral-950 text-white overflow-hidden">
+    <section className="relative pt-28 pb-14 sm:pt-40 sm:pb-20 bg-noir-950 text-white overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-20" />
       <div className="absolute top-0 left-1/3 w-64 h-64 sm:w-96 sm:h-96 bg-primary-500/20 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-0 right-1/4 w-48 h-48 sm:w-72 sm:h-72 bg-secondary-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />

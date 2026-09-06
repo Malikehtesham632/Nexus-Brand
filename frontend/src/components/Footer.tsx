@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Layers, Linkedin, Instagram, Facebook, Music2, Mail, Phone } from 'lucide-react';
+import { Gem, Linkedin, Instagram, Facebook, Music2, Mail, Phone } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
 const footerSections = [
@@ -63,7 +63,7 @@ const contactDetails = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-neutral-950 text-white overflow-hidden">
+    <footer className="relative bg-noir-950 text-white overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-20" />
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse-slow" />
       <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-secondary-500/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '3s' }} />
@@ -73,8 +73,8 @@ export default function Footer() {
           <Reveal variant="fade-right" duration={600}>
             <div className="lg:col-span-2">
               <Link to="/" className="flex items-center gap-2.5 mb-5 group">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                  <Layers className="w-5 h-5 text-white" strokeWidth={2.5} />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
+                  <Gem className="w-5 h-5 text-noir-950" strokeWidth={2.5} />
                 </div>
                 <span className="text-xl font-extrabold tracking-tight">Nexus</span>
               </Link>

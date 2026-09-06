@@ -44,34 +44,34 @@ export default function Contact() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-noir-950">
       <PageHeader
         eyebrow="Company"
         title="Get in touch"
         description="Questions, feedback, or just want to say hello? We'd love to hear from you."
       />
 
-      <section className="py-20">
+      <section className="py-20 bg-noir-950">
         <div className="max-w-5xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-14">
           <Reveal variant="fade-right" duration={600}>
             <div>
-              <h2 className="text-xl font-bold text-neutral-900 mb-6">Contact details</h2>
+              <h2 className="text-xl font-bold text-white mb-6">Contact details</h2>
               <div className="flex flex-col gap-4 mb-10">
                 {contactMethods.map((contact) => (
                   <a
                     key={contact.label}
                     href={contact.href}
-                    className="flex items-center gap-3 text-neutral-600 hover:text-primary-600 transition-colors"
+                    className="flex items-center gap-3 text-noir-300 hover:text-primary-400 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center">
-                      <contact.icon className="w-4.5 h-4.5 text-primary-600" />
+                    <div className="w-10 h-10 rounded-lg bg-primary-500/10 flex items-center justify-center">
+                      <contact.icon className="w-4.5 h-4.5 text-primary-400" />
                     </div>
                     {contact.label}
                   </a>
                 ))}
               </div>
 
-              <h3 className="text-sm font-bold text-neutral-900 mb-4 uppercase tracking-wider">Follow along</h3>
+              <h3 className="text-sm font-bold text-white mb-4 uppercase tracking-wider">Follow along</h3>
               <div className="flex gap-3">
                 {socials.map((social) => (
                   <a
@@ -80,9 +80,9 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-11 h-11 rounded-xl bg-neutral-100 hover:bg-primary-50 flex items-center justify-center transition-all hover:-translate-y-1"
+                    className="w-11 h-11 rounded-xl bg-white/5 hover:bg-primary-500/10 flex items-center justify-center transition-all hover:-translate-y-1"
                   >
-                    <social.icon className="w-5 h-5 text-neutral-600 hover:text-primary-600" />
+                    <social.icon className="w-5 h-5 text-noir-300 hover:text-primary-400" />
                   </a>
                 ))}
               </div>
@@ -97,7 +97,7 @@ export default function Contact() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="px-4 py-3 rounded-xl bg-noir-900 border border-white/10 text-white placeholder:text-noir-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <input
                 type="email"
@@ -105,7 +105,7 @@ export default function Contact() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                className="px-4 py-3 rounded-xl bg-noir-900 border border-white/10 text-white placeholder:text-noir-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
               />
               <textarea
                 placeholder="Your message"
@@ -113,7 +113,7 @@ export default function Contact() {
                 onChange={(e) => setMessage(e.target.value)}
                 required
                 rows={5}
-                className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
+                className="px-4 py-3 rounded-xl bg-noir-900 border border-white/10 text-white placeholder:text-noir-500 focus:outline-none focus:ring-2 focus:ring-primary-500 resize-none"
               />
 
               {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -122,7 +122,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50"
+                className="mt-2 px-6 py-3 bg-gradient-to-r from-primary-300 to-primary-500 text-noir-950 rounded-xl font-semibold hover:shadow-lg hover:shadow-primary-500/20 transition-all disabled:opacity-50"
               >
                 {loading ? 'Sending...' : 'Send message'}
               </button>

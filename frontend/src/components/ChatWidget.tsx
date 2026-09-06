@@ -56,8 +56,8 @@ export default function ChatWidget() {
   return (
     <div className="fixed bottom-6 right-6 z-[90] flex flex-col items-end">
       {open && (
-        <div className="mb-4 w-[92vw] max-w-sm h-[28rem] bg-white rounded-2xl shadow-2xl border border-neutral-200 flex flex-col overflow-hidden animate-fade-in-up">
-          <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white">
+        <div className="mb-4 w-[92vw] max-w-sm h-[28rem] bg-noir-900 rounded-2xl shadow-2xl border border-white/10 flex flex-col overflow-hidden animate-fade-in-up">
+          <div className="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-primary-400 to-primary-600 text-noir-950">
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               <span className="font-semibold text-sm">Nexus Assistant</span>
@@ -67,38 +67,38 @@ export default function ChatWidget() {
             </button>
           </div>
 
-          <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-neutral-50">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-noir-950">
             {messages.map((msg, index) => (
               <div
                 key={index}
                 className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'self-end bg-primary-500 text-white rounded-br-sm'
-                    : 'self-start bg-white text-neutral-700 border border-neutral-200 rounded-bl-sm'
+                    ? 'self-end bg-gradient-to-r from-primary-400 to-primary-600 text-noir-950 rounded-br-sm'
+                    : 'self-start bg-noir-800 text-noir-200 border border-white/10 rounded-bl-sm'
                 }`}
               >
                 {msg.content}
               </div>
             ))}
             {loading && (
-              <div className="self-start bg-white text-neutral-400 border border-neutral-200 rounded-2xl rounded-bl-sm px-4 py-2.5 text-sm">
+              <div className="self-start bg-noir-800 text-noir-400 border border-white/10 rounded-2xl rounded-bl-sm px-4 py-2.5 text-sm">
                 Typing...
               </div>
             )}
           </div>
 
-          <form onSubmit={handleSend} className="flex items-center gap-2 p-3 border-t border-neutral-200">
+          <form onSubmit={handleSend} className="flex items-center gap-2 p-3 border-t border-white/10">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type a message..."
-              className="flex-1 px-4 py-2.5 rounded-xl border border-neutral-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-noir-800 border border-white/10 text-white placeholder:text-noir-500 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="w-10 h-10 flex-shrink-0 rounded-xl bg-primary-500 hover:bg-primary-600 text-white flex items-center justify-center transition-colors disabled:opacity-40"
+              className="w-10 h-10 flex-shrink-0 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600 hover:brightness-110 text-noir-950 flex items-center justify-center transition-all disabled:opacity-40"
               aria-label="Send message"
             >
               <Send className="w-4 h-4" />
@@ -109,7 +109,7 @@ export default function ChatWidget() {
 
       <button
         onClick={() => setOpen(!open)}
-        className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-xl shadow-primary-500/30 flex items-center justify-center hover:scale-105 transition-transform"
+        className="w-14 h-14 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 text-noir-950 shadow-xl shadow-primary-500/30 flex items-center justify-center hover:scale-105 transition-transform"
         aria-label="Toggle chat"
       >
         {open ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}

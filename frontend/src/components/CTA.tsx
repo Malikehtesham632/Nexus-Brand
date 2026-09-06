@@ -6,7 +6,7 @@ import ContactModal from '@/components/ContactModal';
 export default function CTA() {
   const [formType, setFormType] = useState<'trial' | 'demo' | null>(null);
   return (
-    <section className="relative py-24 overflow-hidden bg-white">
+    <section className="relative py-24 overflow-hidden bg-noir-950">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <Reveal variant="scale" duration={800}>
           <div className="relative rounded-3xl overflow-hidden gradient-bg p-12 lg:p-20 text-center">
@@ -36,7 +36,7 @@ export default function CTA() {
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => setFormType('trial')}
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-neutral-900 rounded-xl font-semibold text-base shadow-2xl hover:shadow-white/20 hover:-translate-y-1 transition-all"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-300 to-primary-500 text-noir-950 rounded-xl font-semibold text-base shadow-2xl shadow-primary-500/20 hover:-translate-y-1 transition-all"
                 >
                   Start free trial
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

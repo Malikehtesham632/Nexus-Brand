@@ -12,10 +12,10 @@ export default function StaticPage() {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-noir-950">
       <PageHeader eyebrow={page.eyebrow} title={page.title} description={page.description} />
 
-      <section className="py-20">
+      <section className="py-20 bg-noir-950">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           {page.updated && (
             <Reveal variant="fade-up" duration={500}>
@@ -26,8 +26,8 @@ export default function StaticPage() {
             {page.sections.map((section, index) => (
               <Reveal key={section.heading} variant="fade-up" delay={index * 100} duration={600}>
                 <div>
-                  <h2 className="text-xl font-bold text-neutral-900 mb-3">{section.heading}</h2>
-                  <p className="text-neutral-600 leading-relaxed">{section.body}</p>
+                  <h2 className="text-xl font-bold text-white mb-3">{section.heading}</h2>
+                  <p className="text-noir-300 leading-relaxed">{section.body}</p>
                 </div>
               </Reveal>
             ))}

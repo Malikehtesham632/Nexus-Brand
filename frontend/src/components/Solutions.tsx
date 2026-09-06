@@ -33,20 +33,20 @@ export default function Solutions() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="solutions" className="relative py-24 lg:py-32 bg-neutral-50 overflow-hidden">
-      <div className="absolute inset-0 grid-pattern-dark opacity-30" />
+    <section id="solutions" className="relative py-24 lg:py-32 bg-noir-900 overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-20" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <Reveal variant="fade-up">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-50 text-secondary-600 text-sm font-semibold mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-secondary-500/10 border border-secondary-500/20 text-secondary-300 text-sm font-semibold mb-4">
               How it works
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
               Up and running in
               <span className="gradient-text"> four steps</span>
             </h2>
-            <p className="mt-6 text-lg text-neutral-500 leading-relaxed">
+            <p className="mt-6 text-lg text-noir-300 leading-relaxed">
               No lengthy onboarding. No consultants. Just results.
             </p>
           </div>
@@ -61,33 +61,33 @@ export default function Solutions() {
                   onClick={() => setActiveStep(index)}
                   className={`w-full text-left p-6 rounded-2xl border transition-all duration-500 group ${
                     activeStep === index
-                      ? 'bg-white border-primary-300 shadow-xl shadow-primary-100'
-                      : 'bg-white/50 border-neutral-200/70 hover:border-neutral-300 hover:bg-white hover:shadow-md'
+                      ? 'bg-noir-800 border-primary-500/40 shadow-xl shadow-primary-500/10'
+                      : 'bg-noir-800/40 border-white/5 hover:border-white/10 hover:bg-noir-800/70'
                   }`}
                 >
                   <div className="flex items-start gap-4">
                     <div className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${
                       activeStep === index
-                        ? 'bg-gradient-to-br from-primary-500 to-primary-700 text-white shadow-lg shadow-primary-500/30 scale-110 rotate-3'
-                        : 'bg-neutral-100 text-neutral-400 group-hover:scale-105 group-hover:bg-neutral-200'
+                        ? 'bg-gradient-to-br from-primary-300 to-primary-600 text-noir-950 shadow-lg shadow-primary-500/30 scale-110 rotate-3'
+                        : 'bg-white/5 text-noir-400 group-hover:scale-105 group-hover:bg-white/10'
                     }`}>
                       <step.icon className="w-6 h-6 transition-transform duration-300" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-3">
                         <span className={`text-xs font-bold transition-colors ${
-                          activeStep === index ? 'text-primary-600' : 'text-neutral-400'
+                          activeStep === index ? 'text-primary-300' : 'text-noir-500'
                         }`}>
                           0{index + 1}
                         </span>
                         <h3 className={`text-lg font-bold transition-colors duration-300 ${
-                          activeStep === index ? 'text-neutral-900' : 'text-neutral-600'
+                          activeStep === index ? 'text-white' : 'text-noir-300'
                         }`}>
                           {step.title}
                         </h3>
                       </div>
                       {activeStep === index && (
-                        <p className="mt-3 text-neutral-500 text-[15px] leading-relaxed animate-fade-in">
+                        <p className="mt-3 text-noir-400 text-[15px] leading-relaxed animate-fade-in">
                           {step.description}
                         </p>
                       )}
@@ -101,28 +101,28 @@ export default function Solutions() {
           <Reveal variant="fade-left" delay={200} duration={700}>
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl blur-2xl animate-glow" />
-              <div className="relative bg-white rounded-3xl p-8 border border-neutral-200/70 shadow-2xl shadow-neutral-200/40 card-shine">
+              <div className="relative bg-noir-800 rounded-3xl p-8 border border-white/5 shadow-2xl shadow-black/40 card-shine">
                 <div className="flex items-center gap-3 mb-6">
                   <div
                     key={activeStep}
-                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg animate-scale-in"
+                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-300 to-primary-600 flex items-center justify-center shadow-lg animate-scale-in"
                   >
                     {(() => {
                       const Icon = steps[activeStep].icon;
-                      return <Icon className="w-6 h-6 text-white" />;
+                      return <Icon className="w-6 h-6 text-noir-950" />;
                     })()}
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-primary-600">
+                    <span className="text-xs font-bold text-primary-300">
                       Step 0{activeStep + 1} of 0{steps.length}
                     </span>
-                    <h3 className="text-xl font-bold text-neutral-900">
+                    <h3 className="text-xl font-bold text-white">
                       {steps[activeStep].title}
                     </h3>
                   </div>
                 </div>
 
-                <p key={`desc-${activeStep}`} className="text-neutral-500 leading-relaxed mb-6 animate-fade-in">
+                <p key={`desc-${activeStep}`} className="text-noir-300 leading-relaxed mb-6 animate-fade-in">
                   {steps[activeStep].description}
                 </p>
 
@@ -137,26 +137,26 @@ export default function Solutions() {
                         animation: `fadeInUp 0.5s ease-out ${i * 0.15}s forwards`,
                       }}
                     >
-                      <CheckCircle2 className="w-5 h-5 text-secondary-500 flex-shrink-0" />
-                      <span className="text-neutral-700 text-sm font-medium">{point}</span>
+                      <CheckCircle2 className="w-5 h-5 text-secondary-400 flex-shrink-0" />
+                      <span className="text-noir-200 text-sm font-medium">{point}</span>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-6 border-t border-neutral-100">
+                <div className="flex items-center justify-between pt-6 border-t border-white/10">
                   <div className="flex gap-1.5">
                     {steps.map((_, i) => (
                       <div
                         key={i}
                         className={`h-1.5 rounded-full transition-all duration-500 ${
-                          i === activeStep ? 'w-8 bg-primary-500' : 'w-1.5 bg-neutral-200 hover:bg-neutral-300'
+                          i === activeStep ? 'w-8 bg-primary-400' : 'w-1.5 bg-white/10 hover:bg-white/20'
                         }`}
                       />
                     ))}
                   </div>
                   <button
                     onClick={() => setActiveStep((prev) => (prev + 1) % steps.length)}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors group"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-300 hover:text-primary-200 transition-colors group"
                   >
                     Next step
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

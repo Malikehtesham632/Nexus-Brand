@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Layers, User, LogOut } from 'lucide-react';
+import { Menu, X, Gem, User, LogOut } from 'lucide-react';
 import AuthModal from '@/components/AuthModal';
 import { getMe } from '@/lib/api';
 
@@ -51,19 +51,17 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm border-b border-neutral-200/50'
+          ? 'bg-noir-950/85 backdrop-blur-lg shadow-lg shadow-black/40 border-b border-primary-500/10'
           : 'bg-transparent'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30 transition-transform group-hover:scale-105">
-              <Layers className="w-5 h-5 text-white" strokeWidth={2.5} />
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-300 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20 transition-transform group-hover:scale-105">
+              <Gem className="w-5 h-5 text-noir-950" strokeWidth={2.5} />
             </div>
-            <span className={`text-xl font-extrabold tracking-tight transition-colors ${
-              scrolled ? 'text-neutral-900' : 'text-white'
-            }`}>
+            <span className="text-xl font-extrabold tracking-tight text-white">
               Nexus
             </span>
           </Link>
@@ -73,11 +71,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
-                  scrolled
-                    ? 'text-neutral-700 hover:text-primary-600 hover:bg-primary-50'
-                    : 'text-white/80 hover:text-white hover:bg-white/10'
-                }`}
+                className="px-4 py-2 text-sm font-medium rounded-lg text-noir-200 hover:text-primary-300 hover:bg-white/5 transition-all"
               >
                 {link.label}
               </Link>
@@ -89,18 +83,14 @@ export default function Navbar() {
               <>
                 <Link
                   to="/profile"
-                  className={`flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity ${
-                    scrolled ? 'text-neutral-700' : 'text-white/90'
-                  }`}
+                  className="flex items-center gap-2 text-sm font-semibold text-noir-200 hover:text-primary-300 transition-colors"
                 >
                   <User className="w-4 h-4" />
                   Hi, {userName}
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className={`flex items-center gap-1.5 text-sm font-semibold transition-colors ${
-                    scrolled ? 'text-neutral-700 hover:text-primary-600' : 'text-white/90 hover:text-white'
-                  }`}
+                  className="flex items-center gap-1.5 text-sm font-semibold text-noir-200 hover:text-primary-300 transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                   Sign out
@@ -110,15 +100,13 @@ export default function Navbar() {
               <>
                 <button
                   onClick={() => setAuthMode('signin')}
-                  className={`text-sm font-semibold transition-colors ${
-                    scrolled ? 'text-neutral-700 hover:text-primary-600' : 'text-white/90 hover:text-white'
-                  }`}
+                  className="text-sm font-semibold text-noir-200 hover:text-primary-300 transition-colors"
                 >
                   Sign in
                 </button>
                 <button
                   onClick={() => setAuthMode('signup')}
-                  className="text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-600 px-5 py-2.5 rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl hover:shadow-primary-500/40 hover:-translate-y-0.5 transition-all"
+                  className="text-sm font-semibold text-noir-950 bg-gradient-to-r from-primary-300 to-primary-500 px-5 py-2.5 rounded-xl shadow-lg shadow-primary-500/20 hover:shadow-xl hover:shadow-primary-500/30 hover:-translate-y-0.5 transition-all"
                 >
                   Get Started
                 </button>
@@ -128,9 +116,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              scrolled ? 'text-neutral-900' : 'text-white'
-            }`}
+            className="md:hidden p-2 rounded-lg text-white"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -138,32 +124,32 @@ export default function Navbar() {
         </div>
 
         {mobileOpen && (
-          <div className="md:hidden bg-white rounded-2xl shadow-xl border border-neutral-200 mt-2 mb-4 p-4 animate-fade-in-down">
+          <div className="md:hidden bg-noir-900 rounded-2xl shadow-xl border border-primary-500/10 mt-2 mb-4 p-4 animate-fade-in-down">
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 text-sm font-medium text-neutral-700 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                  className="px-4 py-3 text-sm font-medium text-noir-200 hover:text-primary-300 hover:bg-white/5 rounded-lg transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="border-t border-neutral-200 my-2" />
+              <div className="border-t border-white/10 my-2" />
               {userName ? (
                 <>
                   <Link
                     to="/profile"
                     onClick={() => setMobileOpen(false)}
-                    className="px-4 py-2 text-sm font-semibold text-neutral-700 flex items-center gap-2 hover:text-primary-600"
+                    className="px-4 py-2 text-sm font-semibold text-noir-200 flex items-center gap-2 hover:text-primary-300"
                   >
                     <User className="w-4 h-4" />
                     Hi, {userName}
                   </Link>
                   <button
                     onClick={handleSignOut}
-                    className="px-4 py-3 text-sm font-semibold text-neutral-700 hover:text-primary-600 rounded-lg transition-colors text-left flex items-center gap-2"
+                    className="px-4 py-3 text-sm font-semibold text-noir-200 hover:text-primary-300 rounded-lg transition-colors text-left flex items-center gap-2"
                   >
                     <LogOut className="w-4 h-4" />
                     Sign out
@@ -176,7 +162,7 @@ export default function Navbar() {
                       setAuthMode('signin');
                       setMobileOpen(false);
                     }}
-                    className="px-4 py-3 text-sm font-semibold text-neutral-700 hover:text-primary-600 rounded-lg transition-colors text-left"
+                    className="px-4 py-3 text-sm font-semibold text-noir-200 hover:text-primary-300 rounded-lg transition-colors text-left"
                   >
                     Sign in
                   </button>
@@ -185,7 +171,7 @@ export default function Navbar() {
                       setAuthMode('signup');
                       setMobileOpen(false);
                     }}
-                    className="px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-primary-500 to-primary-600 rounded-xl text-center"
+                    className="px-4 py-3 text-sm font-semibold text-noir-950 bg-gradient-to-r from-primary-300 to-primary-500 rounded-xl text-center"
                   >
                     Get Started
                   </button>

@@ -44,19 +44,19 @@ export default function AuthModal({ mode, onClose, onLoginSuccess }: AuthModalPr
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8">
+      <div className="relative bg-noir-900 border border-white/10 rounded-2xl shadow-2xl max-w-md w-full p-8">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-neutral-400 hover:text-neutral-700"
+          className="absolute top-4 right-4 text-noir-400 hover:text-white"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <h2 className="text-2xl font-bold text-neutral-900 mb-1">
+        <h2 className="text-2xl font-bold text-white mb-1">
           {isSignup ? 'Create your account' : 'Welcome back'}
         </h2>
-        <p className="text-neutral-500 text-sm mb-6">
+        <p className="text-noir-400 text-sm mb-6">
           {isSignup ? 'Start your free trial today' : 'Sign in to your account'}
         </p>
 
@@ -68,7 +68,7 @@ export default function AuthModal({ mode, onClose, onLoginSuccess }: AuthModalPr
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="px-4 py-3 rounded-xl bg-noir-800 border border-white/10 text-white placeholder:text-noir-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           )}
           <input
@@ -77,7 +77,7 @@ export default function AuthModal({ mode, onClose, onLoginSuccess }: AuthModalPr
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="px-4 py-3 rounded-xl bg-noir-800 border border-white/10 text-white placeholder:text-noir-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
           <input
             type="password"
@@ -85,7 +85,7 @@ export default function AuthModal({ mode, onClose, onLoginSuccess }: AuthModalPr
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            className="px-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            className="px-4 py-3 rounded-xl bg-noir-800 border border-white/10 text-white placeholder:text-noir-500 focus:outline-none focus:ring-2 focus:ring-primary-500"
           />
 
           {error && <p className="text-red-500 text-sm">{error}</p>}
@@ -94,17 +94,17 @@ export default function AuthModal({ mode, onClose, onLoginSuccess }: AuthModalPr
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all disabled:opacity-50"
+            className="mt-2 px-6 py-3 bg-gradient-to-r from-primary-300 to-primary-500 text-noir-950 rounded-xl font-semibold hover:shadow-lg hover:shadow-primary-500/20 transition-all disabled:opacity-50"
           >
             {loading ? 'Please wait...' : isSignup ? 'Sign up' : 'Sign in'}
           </button>
         </form>
 
-        <p className="text-center text-sm text-neutral-500 mt-6">
+        <p className="text-center text-sm text-noir-400 mt-6">
           {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
           <button
             onClick={() => setIsSignup(!isSignup)}
-            className="text-primary-600 font-semibold hover:underline"
+            className="text-primary-400 font-semibold hover:underline"
           >
             {isSignup ? 'Sign in' : 'Sign up'}
           </button>

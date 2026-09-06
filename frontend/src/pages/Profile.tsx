@@ -38,7 +38,7 @@ export default function Profile() {
   }
 
   if (loading) {
-    return <div className="min-h-screen bg-white" />;
+    return <div className="min-h-screen bg-noir-950" />;
   }
 
   if (notAuthenticated || !user) {
@@ -54,14 +54,14 @@ export default function Profile() {
   const firstName = user.name.split(' ')[0];
 
   return (
-    <div className="bg-neutral-50 min-h-screen">
-      <section className="relative pt-28 pb-24 sm:pt-36 sm:pb-32 bg-gradient-to-br from-primary-600 via-primary-700 to-neutral-950 overflow-hidden">
+    <div className="bg-noir-950 min-h-screen">
+      <section className="relative pt-28 pb-24 sm:pt-36 sm:pb-32 bg-gradient-to-br from-primary-600 via-primary-800 to-noir-950 overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-10" />
-        <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary-400/30 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary-400/20 rounded-full blur-3xl animate-pulse-slow" />
         <div className="relative max-w-2xl mx-auto px-6 lg:px-8 text-center">
           <Reveal variant="scale" duration={500}>
             <div className="w-20 h-20 mx-auto rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl mb-5">
-              <span className="text-3xl font-bold text-white">{user.name.charAt(0).toUpperCase()}</span>
+              <span className="text-3xl font-bold text-primary-300">{user.name.charAt(0).toUpperCase()}</span>
             </div>
           </Reveal>
           <Reveal variant="fade-up" delay={100} duration={500}>
@@ -74,32 +74,32 @@ export default function Profile() {
       <section className="relative -mt-14 sm:-mt-16 pb-20">
         <div className="max-w-2xl mx-auto px-6 lg:px-8">
           <Reveal variant="fade-up" duration={500}>
-            <div className="rounded-2xl bg-white border border-neutral-200 shadow-xl shadow-neutral-900/5 p-6 sm:p-8">
-              <div className="flex items-center gap-2 mb-6 text-secondary-600 text-sm font-semibold">
+            <div className="rounded-2xl bg-noir-900 border border-white/10 shadow-xl shadow-black/40 p-6 sm:p-8">
+              <div className="flex items-center gap-2 mb-6 text-secondary-400 text-sm font-semibold">
                 <ShieldCheck className="w-4 h-4" />
                 Account verified
               </div>
 
               <div className="flex flex-col gap-3 mb-8">
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50">
-                  <User className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5">
+                  <User className="w-5 h-5 text-primary-400 flex-shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-xs text-neutral-400 uppercase tracking-wider">Full name</p>
-                    <p className="text-sm font-semibold text-neutral-900 truncate">{user.name}</p>
+                    <p className="text-xs text-noir-500 uppercase tracking-wider">Full name</p>
+                    <p className="text-sm font-semibold text-white truncate">{user.name}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50">
-                  <Mail className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5">
+                  <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-xs text-neutral-400 uppercase tracking-wider">Email address</p>
-                    <p className="text-sm font-semibold text-neutral-900 truncate">{user.email}</p>
+                    <p className="text-xs text-noir-500 uppercase tracking-wider">Email address</p>
+                    <p className="text-sm font-semibold text-white truncate">{user.email}</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50">
-                  <Calendar className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5">
+                  <Calendar className="w-5 h-5 text-primary-400 flex-shrink-0" />
                   <div className="min-w-0">
-                    <p className="text-xs text-neutral-400 uppercase tracking-wider">Member since</p>
-                    <p className="text-sm font-semibold text-neutral-900">{joinedDate}</p>
+                    <p className="text-xs text-noir-500 uppercase tracking-wider">Member since</p>
+                    <p className="text-sm font-semibold text-white">{joinedDate}</p>
                   </div>
                 </div>
               </div>
@@ -107,13 +107,13 @@ export default function Profile() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   to="/"
-                  className="flex-1 text-center px-6 py-3 rounded-xl border border-neutral-200 text-neutral-700 font-semibold hover:bg-neutral-50 transition-all"
+                  className="flex-1 text-center px-6 py-3 rounded-xl border border-white/10 text-white font-semibold hover:bg-white/5 transition-all"
                 >
                   Back to home
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-red-50 text-red-600 font-semibold hover:bg-red-100 transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-red-500/10 text-red-400 font-semibold hover:bg-red-500/20 transition-all"
                 >
                   <LogOut className="w-4 h-4" />
                   Sign out

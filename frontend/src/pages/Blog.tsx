@@ -31,31 +31,31 @@ const posts = [
 
 export default function Blog() {
   return (
-    <div className="bg-white">
+    <div className="bg-noir-950">
       <PageHeader
         eyebrow="Company"
         title="The Nexus Blog"
         description="Product updates, engineering deep-dives, and lessons from teams building better workflows."
       />
 
-      <section className="py-20">
+      <section className="py-20 bg-noir-950">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {posts.map((post, index) => (
               <Reveal key={post.title} variant="fade-up" delay={index * 100} duration={600}>
                 <a
                   href="#"
-                  className="group block p-7 rounded-2xl border border-neutral-200 hover:border-primary-200 hover:shadow-lg transition-all h-full"
+                  className="group block p-7 rounded-2xl border border-white/10 bg-noir-900 hover:border-primary-500/30 hover:shadow-lg hover:shadow-primary-500/10 transition-all h-full"
                 >
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold uppercase tracking-wider text-primary-600">{post.tag}</span>
-                    <span className="text-xs text-neutral-400">{post.date}</span>
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary-400">{post.tag}</span>
+                    <span className="text-xs text-noir-500">{post.date}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-neutral-900 mb-2 flex items-start gap-2">
+                  <h3 className="text-lg font-bold text-white mb-2 flex items-start gap-2">
                     {post.title}
                     <ArrowUpRight className="w-4 h-4 mt-1 flex-shrink-0 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                   </h3>
-                  <p className="text-neutral-600 text-sm leading-relaxed">{post.excerpt}</p>
+                  <p className="text-noir-300 text-sm leading-relaxed">{post.excerpt}</p>
                 </a>
               </Reveal>
             ))}

@@ -61,28 +61,28 @@ export default function Pricing() {
   const [yearly, setYearly] = useState(true);
 
   return (
-    <section id="pricing" className="relative py-24 lg:py-32 bg-neutral-50 overflow-hidden">
-      <div className="absolute inset-0 grid-pattern-dark opacity-30" />
+    <section id="pricing" className="relative py-24 lg:py-32 bg-noir-900 overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-20" />
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <Reveal variant="fade-up">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary-50 text-primary-600 text-sm font-semibold mb-4">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-sm font-semibold mb-4">
               Pricing
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-neutral-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
               Simple, transparent
               <span className="gradient-text"> pricing</span>
             </h2>
-            <p className="mt-6 text-lg text-neutral-500 leading-relaxed">
+            <p className="mt-6 text-lg text-noir-300 leading-relaxed">
               Start free. Upgrade when you're ready. Cancel anytime.
             </p>
 
-            <div className="inline-flex items-center gap-3 mt-8 p-1.5 bg-white rounded-xl border border-neutral-200 shadow-sm">
+            <div className="inline-flex items-center gap-3 mt-8 p-1.5 bg-noir-800 rounded-xl border border-white/10 shadow-sm">
               <button
                 onClick={() => setYearly(false)}
                 className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
-                  !yearly ? 'bg-neutral-900 text-white shadow-md' : 'text-neutral-500 hover:text-neutral-900'
+                  !yearly ? 'bg-primary-500 text-noir-950 shadow-md' : 'text-noir-400 hover:text-white'
                 }`}
               >
                 Monthly
@@ -90,12 +90,12 @@ export default function Pricing() {
               <button
                 onClick={() => setYearly(true)}
                 className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
-                  yearly ? 'bg-neutral-900 text-white shadow-md' : 'text-neutral-500 hover:text-neutral-900'
+                  yearly ? 'bg-primary-500 text-noir-950 shadow-md' : 'text-noir-400 hover:text-white'
                 }`}
               >
                 Yearly
                 <span className={`text-xs px-2 py-0.5 rounded-full transition-all duration-300 ${
-                  yearly ? 'bg-secondary-500 text-white' : 'bg-secondary-100 text-secondary-700'
+                  yearly ? 'bg-noir-950/20 text-noir-950' : 'bg-secondary-500/15 text-secondary-300'
                 }`}>
                   Save 20%
                 </span>
@@ -115,13 +115,13 @@ export default function Pricing() {
               <div
                 className={`relative rounded-3xl p-8 transition-all duration-500 hover:-translate-y-2 card-shine ${
                   plan.highlighted
-                    ? 'bg-gradient-to-br from-neutral-900 to-neutral-800 text-white shadow-2xl shadow-primary-500/20 lg:scale-105 border-glow'
-                    : 'bg-white border border-neutral-200/70 shadow-lg shadow-neutral-200/30 hover:shadow-xl'
+                    ? 'bg-gradient-to-br from-primary-400 via-primary-500 to-primary-700 text-noir-950 shadow-2xl shadow-primary-500/30 lg:scale-105'
+                    : 'bg-noir-800 border border-white/10 shadow-lg shadow-black/30 hover:border-white/20'
                 }`}
               >
                 {plan.highlighted && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white text-xs font-bold shadow-lg animate-bounce-subtle">
+                    <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-noir-950 text-primary-300 text-xs font-bold shadow-lg animate-bounce-subtle border border-primary-500/30">
                       <Sparkles className="w-3.5 h-3.5" />
                       MOST POPULAR
                     </div>
@@ -129,10 +129,10 @@ export default function Pricing() {
                 )}
 
                 <div className="mb-6">
-                  <h3 className={`text-xl font-bold ${plan.highlighted ? 'text-white' : 'text-neutral-900'}`}>
+                  <h3 className={`text-xl font-bold ${plan.highlighted ? 'text-noir-950' : 'text-white'}`}>
                     {plan.name}
                   </h3>
-                  <p className={`mt-1 text-sm ${plan.highlighted ? 'text-white/60' : 'text-neutral-400'}`}>
+                  <p className={`mt-1 text-sm ${plan.highlighted ? 'text-noir-950/70' : 'text-noir-400'}`}>
                     {plan.description}
                   </p>
                 </div>
@@ -142,23 +142,23 @@ export default function Pricing() {
                     <div className="flex items-baseline gap-1">
                       <span
                         key={yearly ? 'yearly' : 'monthly'}
-                        className={`text-4xl font-extrabold animate-scale-in ${plan.highlighted ? 'text-white' : 'text-neutral-900'}`}
+                        className={`text-4xl font-extrabold animate-scale-in ${plan.highlighted ? 'text-noir-950' : 'text-white'}`}
                       >
                         ${yearly ? plan.yearlyPrice : plan.monthlyPrice}
                       </span>
-                      <span className={`text-sm ${plan.highlighted ? 'text-white/50' : 'text-neutral-400'}`}>
+                      <span className={`text-sm ${plan.highlighted ? 'text-noir-950/60' : 'text-noir-400'}`}>
                         /user/mo
                       </span>
                     </div>
                   ) : (
                     <div className="flex items-baseline gap-1">
-                      <span className={`text-4xl font-extrabold ${plan.highlighted ? 'text-white' : 'text-neutral-900'}`}>
+                      <span className={`text-4xl font-extrabold ${plan.highlighted ? 'text-noir-950' : 'text-white'}`}>
                         Custom
                       </span>
                     </div>
                   )}
                   {plan.monthlyPrice !== null && yearly && (
-                    <p className={`mt-1 text-xs ${plan.highlighted ? 'text-secondary-400' : 'text-secondary-600'}`}>
+                    <p className={`mt-1 text-xs ${plan.highlighted ? 'text-noir-950/70' : 'text-secondary-400'}`}>
                       Billed annually
                     </p>
                   )}
@@ -168,8 +168,8 @@ export default function Pricing() {
                   href="#"
                   className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 mb-8 hover:scale-[1.02] ${
                     plan.highlighted
-                      ? 'bg-white text-neutral-900 hover:bg-neutral-100 shadow-lg'
-                      : 'bg-neutral-900 text-white hover:bg-neutral-800'
+                      ? 'bg-noir-950 text-primary-300 hover:bg-noir-900 shadow-lg'
+                      : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
                   }`}
                 >
                   {plan.cta}
@@ -188,11 +188,11 @@ export default function Pricing() {
                       }}
                     >
                       <div className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center ${
-                        plan.highlighted ? 'bg-secondary-500' : 'bg-secondary-100'
+                        plan.highlighted ? 'bg-noir-950/20' : 'bg-secondary-500/15'
                       }`}>
-                        <Check className={`w-3 h-3 ${plan.highlighted ? 'text-white' : 'text-secondary-600'}`} strokeWidth={3} />
+                        <Check className={`w-3 h-3 ${plan.highlighted ? 'text-noir-950' : 'text-secondary-400'}`} strokeWidth={3} />
                       </div>
-                      <span className={`text-sm ${plan.highlighted ? 'text-white/80' : 'text-neutral-600'}`}>
+                      <span className={`text-sm ${plan.highlighted ? 'text-noir-950/80' : 'text-noir-200'}`}>
                         {feature}
                       </span>
                     </div>
@@ -204,7 +204,7 @@ export default function Pricing() {
         </div>
 
         <Reveal variant="fade-up" delay={300}>
-          <p className="text-center text-neutral-400 text-sm mt-10">
+          <p className="text-center text-noir-400 text-sm mt-10">
             All plans include a 14-day free trial. No credit card required.
           </p>
         </Reveal>
