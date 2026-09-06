@@ -77,6 +77,7 @@ export default {
         'wiggle': 'wiggle 0.5s ease-in-out infinite',
         'count-up': 'countUp 1.5s ease-out forwards',
         'orbit': 'orbit 15s linear infinite',
+        'page-in': 'pageIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
         fadeIn: {
@@ -140,6 +141,10 @@ export default {
         orbit: {
           '0%': { transform: 'rotate(0deg) translateX(40px) rotate(0deg)' },
           '100%': { transform: 'rotate(360deg) translateX(40px) rotate(-360deg)' },
+        },
+        pageIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },

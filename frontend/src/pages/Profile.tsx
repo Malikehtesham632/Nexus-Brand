@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { Reveal } from '@/components/Reveal';
-import PageHeader from '@/components/PageHeader';
-import { User, Mail, Calendar, LogOut } from 'lucide-react';
+import { User, Mail, Calendar, LogOut, ShieldCheck } from 'lucide-react';
 import { getMe } from '@/lib/api';
 
 type UserData = {
@@ -52,46 +51,53 @@ export default function Profile() {
     day: 'numeric',
   });
 
-  return (
-    <div className="bg-white min-h-screen">
-      <PageHeader
-        eyebrow="Account"
-        title="Profile Center"
-        description="Manage your account details and preferences."
-      />
+  const firstName = user.name.split(' ')[0];
 
-      <section className="py-16">
-        <div className="max-w-2xl mx-auto px-6 lg:px-8">
+  return (
+    <div className="bg-neutral-50 min-h-screen">
+      <section className="relative pt-28 pb-24 sm:pt-36 sm:pb-32 bg-gradient-to-br from-primary-600 via-primary-700 to-neutral-950 overflow-hidden">
+        <div className="absolute inset-0 grid-pattern opacity-10" />
+        <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary-400/30 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="relative max-w-2xl mx-auto px-6 lg:px-8 text-center">
           <Reveal variant="scale" duration={500}>
-            <div className="rounded-2xl border border-neutral-200 shadow-sm p-8">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/30">
-                  <span className="text-2xl font-bold text-white">{user.name.charAt(0).toUpperCase()}</span>
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-neutral-900">{user.name}</h2>
-                  <p className="text-neutral-500 text-sm">{user.email}</p>
-                </div>
+            <div className="w-20 h-20 mx-auto rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl mb-5">
+              <span className="text-3xl font-bold text-white">{user.name.charAt(0).toUpperCase()}</span>
+            </div>
+          </Reveal>
+          <Reveal variant="fade-up" delay={100} duration={500}>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-white mb-1">Welcome back, {firstName}</h1>
+            <p className="text-white/60 text-sm">{user.email}</p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="relative -mt-14 sm:-mt-16 pb-20">
+        <div className="max-w-2xl mx-auto px-6 lg:px-8">
+          <Reveal variant="fade-up" duration={500}>
+            <div className="rounded-2xl bg-white border border-neutral-200 shadow-xl shadow-neutral-900/5 p-6 sm:p-8">
+              <div className="flex items-center gap-2 mb-6 text-secondary-600 text-sm font-semibold">
+                <ShieldCheck className="w-4 h-4" />
+                Account verified
               </div>
 
-              <div className="flex flex-col gap-4 mb-8">
+              <div className="flex flex-col gap-3 mb-8">
                 <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50">
-                  <User className="w-5 h-5 text-primary-600" />
-                  <div>
+                  <User className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                  <div className="min-w-0">
                     <p className="text-xs text-neutral-400 uppercase tracking-wider">Full name</p>
-                    <p className="text-sm font-semibold text-neutral-900">{user.name}</p>
+                    <p className="text-sm font-semibold text-neutral-900 truncate">{user.name}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50">
-                  <Mail className="w-5 h-5 text-primary-600" />
-                  <div>
+                  <Mail className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                  <div className="min-w-0">
                     <p className="text-xs text-neutral-400 uppercase tracking-wider">Email address</p>
-                    <p className="text-sm font-semibold text-neutral-900">{user.email}</p>
+                    <p className="text-sm font-semibold text-neutral-900 truncate">{user.email}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 rounded-xl bg-neutral-50">
-                  <Calendar className="w-5 h-5 text-primary-600" />
-                  <div>
+                  <Calendar className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                  <div className="min-w-0">
                     <p className="text-xs text-neutral-400 uppercase tracking-wider">Member since</p>
                     <p className="text-sm font-semibold text-neutral-900">{joinedDate}</p>
                   </div>
