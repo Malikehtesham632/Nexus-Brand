@@ -35,6 +35,7 @@ def get_ai_reply(user_message, conversation_history):
     data = response.json()
 
     if "content" not in data:
+        print(f"Anthropic API error (status {response.status_code}): {data}")
         return "Sorry, something went wrong. Please try again in a moment."
 
     return data["content"][0]["text"]
